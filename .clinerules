@@ -1,0 +1,19 @@
+# .clinerules - Mamikos Backend Laravel
+
+## Architecture & Folder Structure
+- Use standard Laravel MVC / Service Layer pattern under `app`:
+  - `Http/Controllers`: REST controllers and request handling.
+  - `Http/Requests`: Form Request validation classes.
+  - `Http/Resources`: API Resources for response transformation.
+  - `Services`: Business logic implementations.
+  - `Models`: Eloquent ORM models.
+  - `Repositories`: Data access layer / repository pattern.
+  - `Exceptions`: Custom exception handlers.
+
+## Coding Standards & Best Practices
+- **SOLID Principles & Clean Code**: Single responsibility, dependency injection via constructor, Form Requests for input validation.
+- **Exception Handling**: Uniform error responses using Laravel exception handler.
+
+## Git Commit Policy (Strict)
+- Commit **every single change** (feature, refactor, bug fix, test, chore) immediately with clear, descriptive commit messages conforming to Conventional Commits format (`feat: ...`, `fix: ...`, `refactor: ...`, `test: ...`, `chore: ...`).
+- Never bundle unrelated changes into a single big commit.
