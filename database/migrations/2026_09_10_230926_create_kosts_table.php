@@ -11,8 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('kosts', function (Blueprint $table) {
-            //
+        Schema::create('kosts', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('owner_id')->constrained('users')->onDelete('cascade');
+            $table->string('name');
+            $table->string('location');
+            $table->integer('price');
+            $table->text('description')->nullable();
+            $table->integer('room_count');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('kosts', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('kosts');
     }
 };

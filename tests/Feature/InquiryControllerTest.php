@@ -13,17 +13,19 @@ class InquiryControllerTest extends TestCase
 
     public function test_ask_availability_success()
     {
+        $ownerUsername = 'owneruser' . rand(1000, 9999);
         $owner = User::create([
-            'username' => 'owneruser',
-            'email' => 'owner@example.com',
+            'username' => $ownerUsername,
+            'email' => $ownerUsername . '@example.com',
             'password' => bcrypt('password123'),
             'role' => 'OWNER',
             'credits' => 0,
         ]);
 
+        $userUsername = 'regularuser' . rand(1000, 9999);
         $user = User::create([
-            'username' => 'regularuser',
-            'email' => 'regular@example.com',
+            'username' => $userUsername,
+            'email' => $userUsername . '@example.com',
             'password' => bcrypt('password123'),
             'role' => 'REGULAR_USER',
             'credits' => 20,
@@ -50,4 +52,5 @@ class InquiryControllerTest extends TestCase
         $this->assertEquals(15, $user->fresh()->credits);
     }
 }
+
 

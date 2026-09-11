@@ -13,9 +13,10 @@ class KostControllerTest extends TestCase
 
     public function test_create_kost_success()
     {
+        $username = 'owneruser' . rand(1000, 9999);
         $owner = User::create([
-            'username' => 'owneruser',
-            'email' => 'owner@example.com',
+            'username' => $username,
+            'email' => $username . '@example.com',
             'password' => bcrypt('password123'),
             'role' => 'OWNER',
             'credits' => 0,
@@ -36,9 +37,10 @@ class KostControllerTest extends TestCase
 
     public function test_search_kosts()
     {
+        $username = 'owneruser' . rand(1000, 9999);
         $owner = User::create([
-            'username' => 'owneruser',
-            'email' => 'owner@example.com',
+            'username' => $username,
+            'email' => $username . '@example.com',
             'password' => bcrypt('password123'),
             'role' => 'OWNER',
             'credits' => 0,
@@ -60,4 +62,5 @@ class KostControllerTest extends TestCase
             ->assertJsonPath('data.totalElements', 1);
     }
 }
+
 
