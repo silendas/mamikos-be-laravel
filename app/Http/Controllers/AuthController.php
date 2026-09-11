@@ -33,13 +33,13 @@ class AuthController extends Controller
         requestBody: new OA\RequestBody(
             required: true,
             content: new OA\JsonContent(
-                required: ["name", "email", "password", "password_confirmation", "role"],
+                required: ["username", "email", "password", "password_confirmation", "role"],
                 properties: [
-                    new OA\Property(property: "name", type: "string", example: "John Doe"),
+                    new OA\Property(property: "username", type: "string", example: "johndoe"),
                     new OA\Property(property: "email", type: "string", format: "email", example: "john@example.com"),
                     new OA\Property(property: "password", type: "string", format: "password", example: "password123"),
                     new OA\Property(property: "password_confirmation", type: "string", format: "password", example: "password123"),
-                    new OA\Property(property: "role", type: "string", example: "seeker")
+                    new OA\Property(property: "role", type: "string", example: "REGULAR_USER", enum: ["OWNER", "REGULAR_USER", "PREMIUM_USER"])
                 ]
             )
         ),
@@ -104,7 +104,7 @@ class AuthController extends Controller
             required: true,
             content: new OA\JsonContent(
                 properties: [
-                    new OA\Property(property: "name", type: "string", example: "John Doe Updated"),
+                    new OA\Property(property: "username", type: "string", example: "johndoe_updated"),
                     new OA\Property(property: "email", type: "string", format: "email", example: "john_updated@example.com")
                 ]
             )
@@ -147,5 +147,6 @@ class AuthController extends Controller
         return BaseResponse::success(200, ResponseMessage::PASSWORD_CHANGED, null);
     }
 }
+
 
 

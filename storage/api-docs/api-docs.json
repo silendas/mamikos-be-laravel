@@ -27,16 +27,16 @@
                         "application/json": {
                             "schema": {
                                 "required": [
-                                    "name",
+                                    "username",
                                     "email",
                                     "password",
                                     "password_confirmation",
                                     "role"
                                 ],
                                 "properties": {
-                                    "name": {
+                                    "username": {
                                         "type": "string",
-                                        "example": "John Doe"
+                                        "example": "johndoe"
                                     },
                                     "email": {
                                         "type": "string",
@@ -55,7 +55,12 @@
                                     },
                                     "role": {
                                         "type": "string",
-                                        "example": "seeker"
+                                        "example": "REGULAR_USER",
+                                        "enum": [
+                                            "OWNER",
+                                            "REGULAR_USER",
+                                            "PREMIUM_USER"
+                                        ]
                                     }
                                 },
                                 "type": "object"
@@ -149,9 +154,9 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "name": {
+                                    "username": {
                                         "type": "string",
-                                        "example": "John Doe Updated"
+                                        "example": "johndoe_updated"
                                     },
                                     "email": {
                                         "type": "string",
