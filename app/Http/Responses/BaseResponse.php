@@ -15,6 +15,16 @@ class BaseResponse
             'data' => $data,
         ], $code);
     }
+    public static function errorWithData(int $code, string $message, mixed $data): JsonResponse
+    {
+        return response()->json([
+            'success' => false,
+            'code' => $code,
+            'message' => $message,
+            'data' => $data,
+        ], $code);
+    }
+
 
     public static function error(int $code, string $message): JsonResponse
     {
@@ -26,3 +36,4 @@ class BaseResponse
         ], $code);
     }
 }
+
