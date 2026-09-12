@@ -102,6 +102,36 @@ Interactive API documentation is available via Swagger UI once the application i
 *(To regenerate Swagger docs after annotation changes: `php artisan l5-swagger:generate`)*
 
 ---
+---
+
+## 🧪 Running Tests
+
+This project includes comprehensive Unit and Feature tests using PHPUnit.
+
+### 1. Run All Tests
+Execute the entire test suite:
+```bash
+php artisan test
+```
+
+### 2. Run Specific Test Suites
+- Run only Unit tests:
+  ```bash
+  php artisan test --testsuite=Unit
+  ```
+- Run only Feature tests:
+  ```bash
+  php artisan test --testsuite=Feature
+  ```
+
+### 3. Run a Specific Test Class
+```bash
+php artisan test tests/Feature/KostControllerTest.php
+```
+
+### 4. Test Environment
+Tests automatically use the testing configuration defined in `phpunit.xml` (typically using an in-memory SQLite database).
+
 
 ## 🧪 API Endpoints Reference
 
