@@ -33,12 +33,11 @@ class AuthController extends Controller
         requestBody: new OA\RequestBody(
             required: true,
             content: new OA\JsonContent(
-                required: ["username", "email", "password", "password_confirmation", "role"],
+                required: ["username", "email", "password", "role"],
                 properties: [
                     new OA\Property(property: "username", type: "string", example: "johndoe"),
                     new OA\Property(property: "email", type: "string", format: "email", example: "john@example.com"),
                     new OA\Property(property: "password", type: "string", format: "password", example: "password123"),
-                    new OA\Property(property: "password_confirmation", type: "string", format: "password", example: "password123"),
                     new OA\Property(property: "role", type: "string", example: "REGULAR_USER", enum: ["OWNER", "REGULAR_USER", "PREMIUM_USER"])
                 ]
             )
@@ -61,9 +60,9 @@ class AuthController extends Controller
         requestBody: new OA\RequestBody(
             required: true,
             content: new OA\JsonContent(
-                required: ["email", "password"],
+                required: ["usernameOrEmail", "password"],
                 properties: [
-                    new OA\Property(property: "email", type: "string", format: "email", example: "john@example.com"),
+                    new OA\Property(property: "usernameOrEmail", type: "string", example: "johndoe"),
                     new OA\Property(property: "password", type: "string", format: "password", example: "password123")
                 ]
             )
@@ -128,11 +127,10 @@ class AuthController extends Controller
         requestBody: new OA\RequestBody(
             required: true,
             content: new OA\JsonContent(
-                required: ["current_password", "new_password", "new_password_confirmation"],
+                required: ["currentPassword", "newPassword"],
                 properties: [
-                    new OA\Property(property: "current_password", type: "string", format: "password", example: "password123"),
-                    new OA\Property(property: "new_password", type: "string", format: "password", example: "newpassword123"),
-                    new OA\Property(property: "new_password_confirmation", type: "string", format: "password", example: "newpassword123")
+                    new OA\Property(property: "currentPassword", type: "string", format: "password", example: "password123"),
+                    new OA\Property(property: "newPassword", type: "string", format: "password", example: "newpassword123")
                 ]
             )
         ),

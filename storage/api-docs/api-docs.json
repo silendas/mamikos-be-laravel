@@ -30,7 +30,6 @@
                                     "username",
                                     "email",
                                     "password",
-                                    "password_confirmation",
                                     "role"
                                 ],
                                 "properties": {
@@ -44,11 +43,6 @@
                                         "example": "john@example.com"
                                     },
                                     "password": {
-                                        "type": "string",
-                                        "format": "password",
-                                        "example": "password123"
-                                    },
-                                    "password_confirmation": {
                                         "type": "string",
                                         "format": "password",
                                         "example": "password123"
@@ -91,14 +85,13 @@
                         "application/json": {
                             "schema": {
                                 "required": [
-                                    "email",
+                                    "usernameOrEmail",
                                     "password"
                                 ],
                                 "properties": {
-                                    "email": {
+                                    "usernameOrEmail": {
                                         "type": "string",
-                                        "format": "email",
-                                        "example": "john@example.com"
+                                        "example": "johndoe"
                                     },
                                     "password": {
                                         "type": "string",
@@ -197,22 +190,16 @@
                         "application/json": {
                             "schema": {
                                 "required": [
-                                    "current_password",
-                                    "new_password",
-                                    "new_password_confirmation"
+                                    "currentPassword",
+                                    "newPassword"
                                 ],
                                 "properties": {
-                                    "current_password": {
+                                    "currentPassword": {
                                         "type": "string",
                                         "format": "password",
                                         "example": "password123"
                                     },
-                                    "new_password": {
-                                        "type": "string",
-                                        "format": "password",
-                                        "example": "newpassword123"
-                                    },
-                                    "new_password_confirmation": {
+                                    "newPassword": {
                                         "type": "string",
                                         "format": "password",
                                         "example": "newpassword123"
@@ -251,11 +238,11 @@
                         "application/json": {
                             "schema": {
                                 "required": [
-                                    "kost_id",
+                                    "kostId",
                                     "message"
                                 ],
                                 "properties": {
-                                    "kost_id": {
+                                    "kostId": {
                                         "type": "integer",
                                         "example": 1
                                     },
@@ -323,10 +310,9 @@
                             "schema": {
                                 "required": [
                                     "name",
-                                    "description",
-                                    "address",
+                                    "location",
                                     "price",
-                                    "room_available"
+                                    "roomCount"
                                 ],
                                 "properties": {
                                     "name": {
@@ -337,7 +323,7 @@
                                         "type": "string",
                                         "example": "Comfortable kost near campus"
                                     },
-                                    "address": {
+                                    "location": {
                                         "type": "string",
                                         "example": "Jl. Merdeka No. 10"
                                     },
@@ -346,7 +332,7 @@
                                         "format": "float",
                                         "example": 1500000
                                     },
-                                    "room_available": {
+                                    "roomCount": {
                                         "type": "integer",
                                         "example": 5
                                     }
@@ -432,7 +418,7 @@
                                         "type": "string",
                                         "example": "Updated description"
                                     },
-                                    "address": {
+                                    "location": {
                                         "type": "string",
                                         "example": "Jl. Merdeka No. 12"
                                     },
@@ -441,7 +427,7 @@
                                         "format": "float",
                                         "example": 1600000
                                     },
-                                    "room_available": {
+                                    "roomCount": {
                                         "type": "integer",
                                         "example": 3
                                     }
@@ -602,6 +588,15 @@
                         "description": "Kosts search results fetched successfully"
                     }
                 }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
             }
         }
     },

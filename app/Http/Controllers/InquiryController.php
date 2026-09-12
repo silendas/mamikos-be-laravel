@@ -31,9 +31,9 @@ class InquiryController extends Controller
         requestBody: new OA\RequestBody(
             required: true,
             content: new OA\JsonContent(
-                required: ["kost_id", "message"],
+                required: ["kostId", "message"],
                 properties: [
-                    new OA\Property(property: "kost_id", type: "integer", example: 1),
+                    new OA\Property(property: "kostId", type: "integer", example: 1),
                     new OA\Property(property: "message", type: "string", example: "Is this room still available?")
                 ]
             )

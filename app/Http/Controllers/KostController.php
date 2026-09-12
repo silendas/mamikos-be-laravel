@@ -32,13 +32,13 @@ class KostController extends Controller
         requestBody: new OA\RequestBody(
             required: true,
             content: new OA\JsonContent(
-                required: ["name", "description", "address", "price", "room_available"],
+                required: ["name", "location", "price", "roomCount"],
                 properties: [
                     new OA\Property(property: "name", type: "string", example: "Kost Melati"),
                     new OA\Property(property: "description", type: "string", example: "Comfortable kost near campus"),
-                    new OA\Property(property: "address", type: "string", example: "Jl. Merdeka No. 10"),
+                    new OA\Property(property: "location", type: "string", example: "Jl. Merdeka No. 10"),
                     new OA\Property(property: "price", type: "number", format: "float", example: 1500000),
-                    new OA\Property(property: "room_available", type: "integer", example: 5)
+                    new OA\Property(property: "roomCount", type: "integer", example: 5)
                 ]
             )
         ),
@@ -68,9 +68,9 @@ class KostController extends Controller
                 properties: [
                     new OA\Property(property: "name", type: "string", example: "Kost Melati Updated"),
                     new OA\Property(property: "description", type: "string", example: "Updated description"),
-                    new OA\Property(property: "address", type: "string", example: "Jl. Merdeka No. 12"),
+                    new OA\Property(property: "location", type: "string", example: "Jl. Merdeka No. 12"),
                     new OA\Property(property: "price", type: "number", format: "float", example: 1600000),
-                    new OA\Property(property: "room_available", type: "integer", example: 3)
+                    new OA\Property(property: "roomCount", type: "integer", example: 3)
                 ]
             )
         ),
