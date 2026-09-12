@@ -1,59 +1,155 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Mamikos Backend - Laravel
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Production-ready Laravel backend for the Mamikos Technical Test.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🛠️ Tech Stack & Versions
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+| Technology | Version | Description |
+| :--- | :--- | :--- |
+| **PHP** | `^8.2` | Programming Language |
+| **Laravel** | `^12.0` | Backend PHP Framework |
+| **Laravel Sanctum** | `^4.0` | API Token Authentication |
+| **L5-Swagger / swagger-php** | `^11.1` | OpenAPI / Swagger API Documentation |
+| **Database** | MySQL / SQLite | Relational Database |
+| **Composer** | Latest | Dependency Management |
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 📋 Features & Requirements Implemented
+1. **User Roles & Credits**:
+   - `REGULAR_USER`: Gets 20 initial credits.
+   - `PREMIUM_USER`: Gets 40 initial credits.
+   - `OWNER`: Gets 0 credits. Can add, update, delete, and view their own kosts.
+2. **Kost Management (Owner)**:
+   - Create, update, delete kosts.
+   - View owner kost list.
+3. **Kost Search & Filter (Public/User)**:
+   - Search by name, location, price range (`minPrice`, `maxPrice`).
+   - Sort results by price (`sort=asc` or `sort=desc`).
+   - View kost detail.
+4. **Room Availability Inquiry**:
+   - Users can ask about room availability (`-5 credits` per inquiry).
+   - Validates sufficient credits.
+5. **Scheduled Task**:
+   - Monthly credit recharge on the 1st of every month (Laravel scheduler / command).
+6. **Architecture & Clean Code**:
+   - Standard Laravel MVC / Service Layer pattern (`Controllers`, `FormRequests`, `Resources`, `Services`, `Models`).
+   - Global exception handling with standard `BaseResponse`.
+   - Strict Git commit convention (`feat:`, `fix:`, `refactor:`, `test:`, `chore:`).
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## ⚙️ Prerequisites
+- **PHP >= 8.2** with extensions (`OpenSSL`, `PDO`, `Mbstring`, `Tokenizer`, `XML`, `Ctype`, `JSON`)
+- **Composer** installed globally
+- **MySQL** or **SQLite**
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🚀 Step-by-Step Installation & Running Guide
 
-### Premium Partners
+### 1. Clone the Repository
+```bash
+git clone https://github.com/your-username/mamikos-be-laravel.git
+cd mamikos-be-laravel
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 2. Install Dependencies
+```bash
+composer install
+```
 
-## Contributing
+### 3. Environment Configuration
+Copy `.env.example` to `.env` and generate the application key:
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Configure your database connection in `.env`:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=mamikos_laravel_db
+DB_USERNAME=root
+DB_PASSWORD=your_password
+```
+*(Alternatively, use SQLite: set `DB_CONNECTION=sqlite` and create `database/database.sqlite`).*
 
-## Code of Conduct
+### 4. Run Database Migrations
+```bash
+php artisan migrate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 5. Run the Application
+Start the local development server:
+```bash
+php artisan serve
+```
 
-## Security Vulnerabilities
+The application will start at `http://127.0.0.1:8000`.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+## 📖 API Documentation & Swagger UI
+Interactive API documentation is available via Swagger UI once the application is running:
+- **Swagger UI**: [http://127.0.0.1:8000/api/documentation](http://127.0.0.1:8000/api/documentation)
+- **OpenAPI JSON**: `http://127.0.0.1:8000/storage/api-docs/api-docs.json`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+*(To regenerate Swagger docs after annotation changes: `php artisan l5-swagger:generate`)*
+
+---
+
+## 🧪 API Endpoints Reference
+
+### 1. Auth API (`/api/auth`)
+- **Register**: `POST /api/auth/register`
+  ```json
+  {
+    "username": "budi_owner",
+    "email": "budi@owner.com",
+    "password": "password123",
+    "role": "OWNER"
+  }
+  ```
+- **Login**: `POST /api/auth/login`
+  ```json
+  {
+    "usernameOrEmail": "budi_owner",
+    "password": "password123"
+  }
+  ```
+- **Get Profile**: `GET /api/auth/me` (Requires Bearer Token)
+- **Update Profile**: `PUT /api/auth/me` (Requires Bearer Token)
+- **Change Password**: `PUT /api/auth/password` (Requires Bearer Token)
+
+### 2. Kost API (`/api/kosts`)
+- **Create Kost (Owner)**: `POST /api/kosts` (Requires Bearer Token)
+  ```json
+  {
+    "name": "Kost Melati Indah",
+    "location": "Jakarta Selatan",
+    "price": 1500000.0,
+    "description": "Kost nyaman dekat stasiun",
+    "roomCount": 10
+  }
+  ```
+- **Search Kost (Public)**: `GET /api/kosts/search?location=Jakarta&sort=asc`
+- **Kost Detail (Public)**: `GET /api/kosts/{id}`
+- **Owner Kosts**: `GET /api/kosts/owner/my-kosts` (Requires Owner Token)
+- **Update Kost**: `PUT /api/kosts/{id}` (Owner)
+- **Delete Kost**: `DELETE /api/kosts/{id}` (Owner)
+
+### 3. Inquiry API (`/api/inquiries`)
+- **Ask Room Availability (-5 credits)**: `POST /api/inquiries` (Requires Regular/Premium User Token)
+  ```json
+  {
+    "kostId": 1,
+    "message": "Apakah kamar masih tersedia untuk bulan depan?"
+  }
+  ```
+- **User Inquiries**: `GET /api/inquiries/my-inquiries` (Requires Bearer Token)
+
